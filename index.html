@@ -13,9 +13,9 @@
     <script src="./heat.js"></script>
     <script>
         var setting = {
-            width: 4975,
-            height: 3410,
-            imgurl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574933171854&di=76f472b7a34b41461c00dafa071d5f57&imgtype=0&src=http%3A%2F%2Fmap.ps123.net%2Fchina%2FUploadFile%2F201508%2F2015082408303567.jpg',
+            width: 4655,
+            height: 2444,
+            imgurl: './images/bg.jpg',
             points: [
                 // {
                 //     x: 100,      // 坐标x,
@@ -28,8 +28,8 @@
         // 随机数据
         for (var i = 0; i < 300; i++) {
             setting.points[i] = {
-                x: 4975/5 + Math.random() * (4975 - 4975/5 *2), // 坐标x,
-                y: 3410/5 + Math.random() * (3410 - 3410/5 *2), // 坐标y
+                x: setting.width/5 + Math.random() * (setting.width - setting.width/5 *2), // 坐标x,
+                y: setting.height/5 + Math.random() * (setting.height - setting.height/5 *2), // 坐标y
                 ratio: Math.random() * 10, // 半径
                 opacity: 0.9
             }

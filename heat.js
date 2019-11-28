@@ -70,7 +70,7 @@
                 setting = {
                     width: this[0].offsetWidth,
                     height: this[0].offsetHeight,
-                    imgurl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574933171854&di=76f472b7a34b41461c00dafa071d5f57&imgtype=0&src=http%3A%2F%2Fmap.ps123.net%2Fchina%2FUploadFile%2F201508%2F2015082408303567.jpg',
+                    imgurl: './images/bg.jpg',
                     points: [],
                 }
                 for (var i = 0; i < 100; i++) {
@@ -98,7 +98,7 @@
             // 写入canvas
             draw(offCanvas, canvas, setting.imgurl);
             // 插入画布
-            this[0].append(canvas)
+            this[0].append(canvas);
             return this;
 
         },
@@ -164,8 +164,8 @@
 
     // 绘制彩色渐变条 拿第一排像素颜色做透明通道和色彩通道的映射
     function getColorGradual(canvas) {
-        let ctx = canvas.getContext('2d');;
-        let grd = ctx.createLinearGradient(0, 0, 256, 10);
+        var ctx = canvas.getContext('2d');;
+        var grd = ctx.createLinearGradient(0, 0, 256, 10);
         grd.addColorStop(0.2, "rgba(0,0,255,0.2)");
         grd.addColorStop(0.3, "rgba(43,111,231,0.3)");
         grd.addColorStop(0.4, "rgba(2,192,241,0.4)");
