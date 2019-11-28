@@ -28,9 +28,9 @@
         // 随机数据
         for (var i = 0; i < 300; i++) {
             setting.points[i] = {
-                x: setting.width/5 + Math.random() * (setting.width - setting.width/5 *2), // 坐标x,
-                y: setting.height/5 + Math.random() * (setting.height - setting.height/5 *2), // 坐标y
-                ratio: Math.random() * 10, // 半径
+                x: setting.width / 5 + Math.random() * (setting.width - setting.width / 5 * 2), // 坐标x,
+                y: setting.height / 5 + Math.random() * (setting.height - setting.height / 5 * 2), // 坐标y
+                ratio: 50 + Math.random() * 150, // 半径
                 opacity: 0.9
             }
 
@@ -39,7 +39,7 @@
         // 不带setting 则使用随机假数据
         heat('#heat').load(setting);
         // 设置宽度 
-        heat('canvas' , heat('#heat')).css("width: 100%");
+        heat('canvas', heat('#heat')).css("width: 100%");
     </script>
 </body>
 

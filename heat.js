@@ -70,7 +70,7 @@
                 setting = {
                     width: this[0].offsetWidth,
                     height: this[0].offsetHeight,
-                    imgurl: './images/bg.jpg',
+                    imgurl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574933171854&di=76f472b7a34b41461c00dafa071d5f57&imgtype=0&src=http%3A%2F%2Fmap.ps123.net%2Fchina%2FUploadFile%2F201508%2F2015082408303567.jpg',
                     points: [],
                 }
                 for (var i = 0; i < 100; i++) {
@@ -93,12 +93,12 @@
             this.colorGradual = getColorGradual(offCanvas);
             clearCanvas(canvas);
             // 在离屏渲染
-            drawCanvas(offCanvas, setting.points, setting.width, setting.height, 20);
+            drawCanvas(offCanvas, setting.points);
             drawGradual(offCanvas, this.colorGradual.data);
             // 写入canvas
             draw(offCanvas, canvas, setting.imgurl);
             // 插入画布
-            this[0].append(canvas);
+            this[0].append(canvas)
             return this;
 
         },
@@ -106,9 +106,9 @@
             if (arguments.length > 0) {
                 if (heat.getType(arguments[0]) === 'string' && arguments.length === 1) {
                     for (var i = 0; i < this.length; i++) {
-                        var split  = arguments[0].split(":");
-                        var key  = split[0];
-                        var value  = split[1];
+                        var split = arguments[0].split(":");
+                        var key = split[0];
+                        var value = split[1];
                         this[i].style[key] = value;
                     }
                 } else if (heat.getType(arguments[0]) === 'string' && arguments.length === 2) {
@@ -164,8 +164,8 @@
 
     // 绘制彩色渐变条 拿第一排像素颜色做透明通道和色彩通道的映射
     function getColorGradual(canvas) {
-        var ctx = canvas.getContext('2d');;
-        var grd = ctx.createLinearGradient(0, 0, 256, 10);
+        let ctx = canvas.getContext('2d');;
+        let grd = ctx.createLinearGradient(0, 0, 256, 10);
         grd.addColorStop(0.2, "rgba(0,0,255,0.2)");
         grd.addColorStop(0.3, "rgba(43,111,231,0.3)");
         grd.addColorStop(0.4, "rgba(2,192,241,0.4)");
@@ -180,10 +180,8 @@
     }
 
     // 绘制热力点透明通道
-    function drawCanvas(canvas, points, width, height, range) {
-        var p_width = width,
-            p_height = height,
-            range = range;
+    function drawCanvas(canvas, points) {
+        var range = 0;
         ctx = canvas.getContext("2d");
         clearCanvas(canvas);
         points.map(val => {
@@ -192,11 +190,11 @@
                 x = val.x,
                 y = val.y;
             ctx.beginPath();
-            var grd = ctx.createRadialGradient(x, y, ratio, x, y, range * ratio);
+            var grd = ctx.createRadialGradient(x, y, range, x, y, ratio);
             grd.addColorStop(0, 'rgba(0,0,0,' + opacity);
             grd.addColorStop(1, 'rgba(0,0,0,0)');
             ctx.fillStyle = grd;
-            ctx.arc(x, y, range * ratio, 0, 2 * Math.PI);
+            ctx.arc(x, y, ratio, 0, 2 * Math.PI);
             ctx.fill();
 
         });
