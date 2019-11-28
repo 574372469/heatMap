@@ -19,3 +19,5 @@ var setting = {
 }
 heat('#heat').load(setting);
 ``` 
+# demo 地址
+https://574372469.github.io/heatMap/.
